@@ -1,0 +1,20 @@
+<div *ngIf="purchase.status == purchaseStatus.REQUEST_STATUS">  
+    <div class="modal-header">
+        <h2>Enviar Pedido</h2>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-purchase-item [purchase]="purchase"></app-purchase-item>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger float-right" (click)="cancelPurchase()">Anular Pedido</button>
+        <button type="button" class="btn btn-outline-info float-right" (click)="printPurchase()">Imprimir Solicitud</button> 
+        <button type="button" class="btn btn-outline-success float-right" (click)="dispatchPurchase()">Despachar Pedido</button>
+    </div>
+</div>
+<div *ngIf="purchase.status ==  purchaseStatus.DISPATCHED_STATUS || purchase.status == purchaseStatus.CANCELED_STATUS">
+    <app-purchase-detail [purchase]="purchase"></app-purchase-detail> 
+</div>

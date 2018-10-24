@@ -1,0 +1,43 @@
+/* HeroesComponent's private CSS styles */
+
+.purchases .purchae-row {
+  cursor: pointer;
+}
+
+.purchases .purchae-row.selected {
+  background-color: #CFD8DC !important;
+}
+
+.purchases .purchae-row.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+
+.purchases .purchae-row:hover {
+  color: #607D8B;
+  background-color: #DDD;
+}
+
+.btn-circle.btn-xl {
+    width: 56px;
+    height: 56px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.2);
+    z-index: 4000;
+}
+
+.purchase-add{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 24px;
+    margin-right: 24px;
+}

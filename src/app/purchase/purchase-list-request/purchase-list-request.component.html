@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-12">
+        <h2>Despachar Pedidos</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm purchases">
+            <thead>
+              <tr>
+                <th>Pedido Id</th>
+                <th>Oficina</th>
+                <th>Usuario (Solictud)</th>
+                <th>Fecha se Solicitud</th>
+                <th>Fecha de Anulado</th>
+                <th>Fecha de despacho</th>
+                <th>Usuario (Respuesta)</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr class="purchae-row" *ngFor="let purchase of purchases" [class.selected]="purchase === selectedPurchase" (click)="onSelect(purchase)">
+                <td>{{purchase.id}}</td>
+                <td>{{purchase.office.name}}</td>
+                <td>{{purchase.user.username}}</td>
+                <td>{{purchase.request_date | date:'dd-MM-yyyy'}}</td>
+                <td>{{purchase.canceled_date | date:'dd-MM-yyyy'}}</td>
+                <td>{{purchase.dispatch_date | date:'dd-MM-yyyy'}}</td>
+                <td><span *ngIf="purchase.user_response">{{purchase.user_response.username}}</span></td>
+                <td>{{purchase.status}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ngb-pagination [collectionSize]="totalCount" [maxSize]="5" [(page)]="page" [boundaryLinks]="true" (pageChange)="loadPage($event)" class="d-flex justify-content-center"></ngb-pagination>
+    </div>
+</div>
+    
+    
+
+

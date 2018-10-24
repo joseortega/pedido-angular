@@ -23,9 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              {
+                "input": "./node_modules/bootstrap/dist/css/bootstrap.css"
+                
+              }
             ],
-            "scripts": []
+            "scripts": ["node_modules/jspdf/dist/jspdf.min.js", "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"]
           },
           "configurations": {
             "production": {
@@ -120,3 +124,4 @@
   },
   "defaultProject": "pedido"
 }
+

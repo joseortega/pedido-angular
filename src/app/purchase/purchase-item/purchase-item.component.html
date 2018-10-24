@@ -1,0 +1,58 @@
+<div>
+    <div *ngIf="purchase.status == purchaseStatus.EDITION_STATUS">
+        <form (ngSubmit)="onSubmit()" #purchaseItemForm="ngForm">
+            <div class="row">
+                <ng-template #rt let-r="result" let-t="term">
+                    {{ r.name}}
+                </ng-template>
+                <div class="col-8">
+                  <input type="text" class="form-control" placeholder="Producto" [(ngModel)]="product" [ngbTypeahead]="search" name="producto" [inputFormatter]="formatter" [resultTemplate]="rt" #producto="ngModel">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Cantidad" [(ngModel)]="purchaseItem.request_quantity" name="request_quantity" #request_quantity="ngModel" autocomplete="off">
+                </div>
+                <div [hidden]="request_quantity.valid || request_quantity.pristine"
+                 class="alert alert-danger">
+                    Name is required
+                 </div>
+                <div class="col-1">
+                    <button type="submit" class="btn btn-outline-primary" [disabled]="!purchaseItemForm.form.valid">+</button>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <div class="row purchase-item" *ngFor="let purchaseItem of purchaseItems" [class.selected]="purchaseItem===editPurchaseItem" (click)="edit(purchaseItem)">
+            <div class="col-8">
+                {{purchaseItem.product.name}}
+            </div>
+             <div class="col-3">
+                <span *ngIf="purchaseItem!==editPurchaseItem">{{purchaseItem.request_quantity}}<i class="material-icons">edit</i></span>
+                <input type="text" class="form-control" *ngIf="purchaseItem===editPurchaseItem" [(ngModel)]="purchaseItem.request_quantity"
+                (blur)="update()" (keyup.enter)="update()" autocomplete="off">
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-outline-secondary" (click)="delete(purchaseItem)">x</button>
+            </div> 
+        </div>
+    </div>
+    <div *ngIf="purchase.status == purchaseStatus.REQUEST_STATUS">
+        <div class="row">
+            <div class="col-8">Producto</div>
+             <div class="col-2">Solicitada</div>
+             <div class="col-2">Por Enviar</div>
+        </div>
+        <div class="row purchase-item" *ngFor="let purchaseItem of purchaseItems" [class.selected]="purchaseItem===editPurchaseItem" (click)="edit(purchaseItem)">
+            <div class="col-8">
+                {{purchaseItem.product.name}}
+            </div>
+             <div class="col-2">
+                {{purchaseItem.request_quantity}}
+            </div>
+             <div class="col-2">
+                <span *ngIf="purchaseItem!==editPurchaseItem">{{purchaseItem.dispatch_quantity}}<i class="material-icons">edit</i></span>
+                <input type="text" class="form-control" *ngIf="purchaseItem===editPurchaseItem" [(ngModel)]="purchaseItem.dispatch_quantity"
+                (blur)="update()" (keyup.enter)="update()" autocomplete="off">
+            </div>
+        </div>
+    </div>
+</div>

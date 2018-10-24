@@ -1,0 +1,36 @@
+<div *ngIf="purchase.status == purchaseStatus.EDITION_STATUS">
+    <div class="modal-header">
+        <h2>Editar Pedido</h2>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+        
+        <div class="form-group">
+          <label for="office">Oficina de Solicitud</label>
+          <select class="form-control" id="office"
+                  required
+                  [(ngModel)]="purchase.office.id" name="office"
+                  #office="ngModel">
+          <option *ngFor="let office of offices" [value]="office.id" (click)="updatePurchase()">{{office.name}}</option>
+          </select>
+        </div>
+        <app-purchase-item [purchase]="purchase"></app-purchase-item>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger float-right" (click)="deletePurchase()">Eliminar Solicitud</button>
+        <button type="button" class="btn btn-outline-success float-right" (click)="requestPurchase()">Enviar Solicitud</button>
+    </div>
+</div>
+
+<div *ngIf="purchase.status == purchaseStatus.REQUEST_STATUS && (roles.includes('ROLE_ADMIN') || roles.includes('ROLE_RESPONSE')); else notRoleAdminResponse">
+    <app-purchase-send [purchase]="purchase" [purchases]="purchases"></app-purchase-send> 
+</div>
+
+<ng-template #notRoleAdminResponse>
+    <div *ngIf="purchase.status == purchaseStatus.REQUEST_STATUS">
+        <app-purchase-detail [purchase]="purchase"></app-purchase-detail> 
+    </div>
+</ng-template>

@@ -1,0 +1,20 @@
+<h2>Lista de Productos</h2>
+<div class="table-responsive">
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.category.name}}</td>
+    </tr>
+  </tbody>
+ </table>
+ <ngb-pagination [collectionSize]="totalCount" [maxSize]="5" [(page)]="page" [boundaryLinks]="true" (pageChange)="loadPage($event)" class="d-flex justify-content-center"></ngb-pagination>
+</div>

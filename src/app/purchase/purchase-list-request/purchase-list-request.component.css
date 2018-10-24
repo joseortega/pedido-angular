@@ -1,0 +1,19 @@
+/* HeroesComponent's private CSS styles */
+
+.purchases .purchae-row {
+  cursor: pointer;
+}
+
+.purchases .purchae-row.selected {
+  background-color: #CFD8DC !important;
+}
+
+.purchases .purchae-row.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+
+.purchases .purchae-row:hover {
+  color: #607D8B;
+  background-color: #DDD;
+}

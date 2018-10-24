@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h2 class="modal-title">Detalle de Pedido: {{purchase.id}} Estado: <span class="badge badge-secondary">{{ purchase.status }}</span></h2>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="table-responsive">
+        <table class="table table-striped table-sm purchases">
+          <thead>
+            <tr>
+              <th>Nombre Producto</th>
+              <th>Cantidad Solicitada</th>
+              <th *ngIf="purchase.status == purchaseStatus.DISPATCHED_STATUS">Cantidad Enviada</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr class="purchae-row" *ngFor="let purchaseItem of purchaseItems" (click)="onSelect(purchase)">
+              <td>{{purchaseItem.product.name}}</td>
+              <td>{{purchaseItem.request_quantity}}</td>
+              <td *ngIf="purchase.status == purchaseStatus.DISPATCHED_STATUS">{{purchaseItem.dispatch_quantity}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn btn-outline-dark float-right" (click)="printPurchase()"><i class="material-icons">print</i></button>
+</div>
