@@ -19,9 +19,9 @@ import { NotifierService } from 'angular-notifier';
 })
 export class PurchaseNewComponent implements OnInit {
     
-  private offices: Array<Office>;
-  private purchase: Purchase;
-  private submitted: boolean;
+  public offices: Array<Office>;
+  public purchase: Purchase;
+  public submitted: boolean;
   private readonly notifier: NotifierService;
   
   @Input() private purchases: any;

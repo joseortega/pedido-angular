@@ -6,7 +6,27 @@
         </button>
     </div>
     <div class="modal-body">
-        <app-purchase-item [purchase]="purchase"></app-purchase-item>
+        <div class="row">
+            <div class="col">
+              <dl class="row">
+                <dt class="col-sm-3">Oficina</dt>
+                <dd class="col-sm-9">{{purchase.office.name}}</dd>
+
+                <dt class="col-sm-3">Usua. S.</dt>
+                <dd class="col-sm-9">{{purchase.user.username}}</dd>
+              </dl>
+            </div>
+            <div class="col">
+                <dl class="row">
+                <dt class="col-sm-3">Estado</dt>
+                <dd class="col-sm-9"><span class="badge badge-secondary">{{ purchase.status }}</span></dd>
+
+                <dt class="col-sm-3">Fecha S.</dt>
+                <dd class="col-sm-9">{{purchase.request_date}}</dd>
+              </dl>
+            </div>
+        </div>
+        <app-purchase-item [purchase]="purchase" [purchaseItems]="purchaseItems"></app-purchase-item>
     </div>
 
     <div class="modal-footer">

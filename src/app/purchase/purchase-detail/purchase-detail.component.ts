@@ -18,14 +18,14 @@ import {PurchaseStatus} from '../../model/purchase-status';
 
 export class PurchaseDetailComponent  {
 
-  @Input() private purchase: Purchase;
-  private purchaseItems: any;
-  private purchaseStatus = PurchaseStatus;
+  @Input() public purchase: Purchase;
+  public purchaseItems: any;
+  public purchaseStatus = PurchaseStatus;
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
-    private activeModal: NgbActiveModal, 
+    public activeModal: NgbActiveModal, 
     private purchaseItemService: PurchaseItemService, 
     private userService: UserService,
     private printService: PrintService) {}

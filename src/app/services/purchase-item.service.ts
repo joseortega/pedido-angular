@@ -3,7 +3,7 @@ import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 
 import {map} from 'rxjs/operators'; 
 import {Observable} from 'rxjs';
-import {GLOBAL} from './global';
+import {environment} from '../../environments/environment';
 import {PurchaseItem} from '../model/purchaseItem';
 
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
@@ -19,7 +19,7 @@ export class PurchaseItemService{
                private httpErrorHandler: HttpErrorHandler){
                
         this.handleError = httpErrorHandler.createHandleError('PurchaseItemService');
-        this.urlPurchase = GLOBAL.urlPurchase;
+        this.urlPurchase = environment.urlPurchase;
     }
    
     getPurchaseItems(purchaseId: number) { 

@@ -16,7 +16,7 @@ import { NotifierService } from 'angular-notifier';
   providers: [UserService]
 })
 export class UserLoginComponent implements OnInit {
-    private user: User;
+    public user: User;
     private readonly notifier: NotifierService;
 
     constructor(private notifierService: NotifierService, private route: ActivatedRoute, private router: Router, private userService: UserService){

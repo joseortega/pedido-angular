@@ -27,13 +27,13 @@ import {PurchaseStatus} from '../../model/purchase-status';
 
 export class PurchaseItemComponent implements OnInit {
     
-    @Input() private purchase: Purchase;
-     private purchaseItems: any;
+    @Input() public purchase: Purchase;
+    @Input() private purchaseItems: any;
      private editPurchaseItem: PurchaseItem;
      private product: Product;
      private purchaseItem = new PurchaseItem();
      private readonly notifier: NotifierService;
-     private purchaseStatus = PurchaseStatus;
+     public purchaseStatus = PurchaseStatus;
   
     search = (text$: Observable<any>) =>
       text$.pipe(
@@ -62,29 +62,10 @@ export class PurchaseItemComponent implements OnInit {
       }
 
     ngOnInit(){  
-        this.getPurchaseItems();
     }
   
     closeModal() {
         this.activeModal.close('Modal Closed');
-    }
-    
-    getPurchaseItems(){ 
-        this.purchaseItemService.getPurchaseItems(this.purchase.id).subscribe(
-          data => {
-              this.purchaseItems = data;         
-          },
-          (error: HttpErrorResponse) =>{
-              if (error.error instanceof Error) {
-              //A client-side or network error occurred.				 
-              console.log('An error occurred:', error.error.message);
-            } else {
-              //Backend returns unsuccessful response codes such as 404, 500 etc.				 
-              console.log('Backend returned status code: ', error.status);
-              console.log('Response body:', error.error);
-            }  
-          }
-        );
     }
     
     onSubmit(){
@@ -137,8 +118,7 @@ export class PurchaseItemComponent implements OnInit {
               }
             );
         }
-        this.editPurchaseItem = undefined;
-        
+        this.editPurchaseItem = undefined;   
     }  
     
     delete(purchaseItem: PurchaseItem): void{

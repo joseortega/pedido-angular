@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {GLOBAL} from './global';
+import {environment} from '../../environments/environment';
 import {User} from '../model/user';
 
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
@@ -19,7 +19,7 @@ export class UserService{
     constructor(private messageService: MessageService, private http: HttpClient, httpErrorHandler: HttpErrorHandler){
         this.handleError = httpErrorHandler.createHandleError('UserService');
         
-        this.url = GLOBAL.urlLogin;
+        this.url = environment.urlLogin;
     }
     
     signup(user: User): Observable<any>{       

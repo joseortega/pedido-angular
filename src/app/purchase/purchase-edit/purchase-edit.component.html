@@ -17,7 +17,7 @@
           <option *ngFor="let office of offices" [value]="office.id" (click)="updatePurchase()">{{office.name}}</option>
           </select>
         </div>
-        <app-purchase-item [purchase]="purchase"></app-purchase-item>
+        <app-purchase-item [purchase]="purchase" [purchaseItems]="purchaseItems"></app-purchase-item>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger float-right" (click)="deletePurchase()">Eliminar Solicitud</button>

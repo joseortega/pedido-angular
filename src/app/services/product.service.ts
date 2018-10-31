@@ -3,7 +3,7 @@ import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 
 import {map} from 'rxjs/operators'; 
 import {Observable} from 'rxjs';
-import {GLOBAL} from './global';
+import {environment} from '../../environments/environment';
 
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 import { catchError } from 'rxjs/operators';
@@ -18,7 +18,7 @@ export class ProductService{
         private httpErrorHandler: HttpErrorHandler){
         
         this.handleError = httpErrorHandler.createHandleError('ProductService');
-        this.urlProduct = GLOBAL.urlProduct;
+        this.urlProduct = environment.urlProduct;
     }
     
     getProductList(page: number): Observable<any>{  

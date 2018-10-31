@@ -24,7 +24,7 @@ export class PurchaseSendComponent implements OnInit {
     @Input() purchase: Purchase;
     public purchaseItems;
     private readonly notifier: NotifierService;
-    private purchaseStatus = PurchaseStatus;
+    public purchaseStatus = PurchaseStatus;
     
     
     constructor(private route: ActivatedRoute, 

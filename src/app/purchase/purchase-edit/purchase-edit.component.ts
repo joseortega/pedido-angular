@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Purchase} from '../../model/purchase';
 import {PurchaseService} from '../../services/purchase.service';
+import {PurchaseItemService} from '../../services/purchase-item.service';
 import {UserService} from '../../services/user.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -16,16 +17,17 @@ import {PurchaseStatus} from '../../model/purchase-status';
   selector: 'app-purchase-edit',
   templateUrl: './purchase-edit.component.html',
   styleUrls: ['./purchase-edit.component.css'],
-  providers: [PurchaseService, UserService, OfficeService]
+  providers: [PurchaseService, UserService, OfficeService, PurchaseItemService]
 })
 export class PurchaseEditComponent implements OnInit {
 
   @Input() private purchases: any;
-  @Input() private purchase: Purchase;
+  @Input() public purchase: Purchase;
+  public purchaseItems: any;
   private offices: Array<Office>;
-  private purchaseStatus = PurchaseStatus;
+  public purchaseStatus = PurchaseStatus;
 
-  private roles: any;
+  public roles: any;
   private readonly notifier: NotifierService;
    
   constructor(private route: ActivatedRoute, 
@@ -35,7 +37,8 @@ export class PurchaseEditComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private modalService: NgbModal,
     private officeService: OfficeService,
-    private notifierService: NotifierService) {
+    private notifierService: NotifierService,
+    private purchaseItemService: PurchaseItemService) {
     
       this.notifier = notifierService; 
     }
@@ -43,10 +46,29 @@ export class PurchaseEditComponent implements OnInit {
   ngOnInit() {
       this.getOffices();
       this.roles = this.userService.getRoles();
+      this.getPurchaseItems();
   }
   
   closeModal() {
         this.activeModal.close('Modal Closed');
+   }
+   
+  getPurchaseItems(){ 
+        this.purchaseItemService.getPurchaseItems(this.purchase.id).subscribe(
+          data => {
+              this.purchaseItems = data;         
+          },
+          (error: HttpErrorResponse) =>{
+              if (error.error instanceof Error) {
+              //A client-side or network error occurred.				 
+              console.log('An error occurred:', error.error.message);
+            } else {
+              //Backend returns unsuccessful response codes such as 404, 500 etc.				 
+              console.log('Backend returned status code: ', error.status);
+              console.log('Response body:', error.error);
+            }  
+          }
+        );
     }
  
   updatePurchase(){

@@ -20,10 +20,10 @@ import {PurchaseStatus} from '../../model/purchase-status';
 })
 export class PurchaseListComponent implements OnInit {
     
-    private purchases: any;
+    public purchases: any;
     private selectedPurchase: Purchase;
-    private page= 1;
-    private totalCount: number;
+    public page= 1;
+    public totalCount: number;
     private roles: any;
 
   constructor(

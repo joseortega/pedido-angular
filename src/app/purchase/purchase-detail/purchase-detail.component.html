@@ -1,12 +1,41 @@
 <div class="modal-header">
-    <h2 class="modal-title">Detalle de Pedido: {{purchase.id}} Estado: <span class="badge badge-secondary">{{ purchase.status }}</span></h2>
+    <h2 class="modal-title">Detalle de Pedido: {{purchase.id}}</h2>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
 </div>
 <div class="modal-body">
+    <div class="row">
+        <div class="col">
+          <dl class="row">
+            <dt class="col-sm-3">Oficina</dt>
+            <dd class="col-sm-9">{{purchase.office.name}}</dd>
+            
+            <dt class="col-sm-3">Usua. S.</dt>
+            <dd class="col-sm-9">{{purchase.user.username}}</dd>
+            
+            <dt class="col-sm-3">Fecha S.</dt>
+            <dd class="col-sm-9">{{purchase.request_date}}</dd>
+          </dl>
+        </div>
+        <div class="col">
+            <dl class="row">
+                <dt class="col-sm-3">Estado</dt>
+                <dd class="col-sm-9"><span class="badge badge-secondary">{{ purchase.status }}</span></dd>
+
+                <dt class="col-sm-3" *ngIf="purchase.status == (purchaseStatus.DISPATCHED_STATUS || purchaseStatus.CANCELED_STATUS)">Usua. R.</dt>
+                <dd class="col-sm-9" *ngIf="purchase.status == (purchaseStatus.DISPATCHED_STATUS || purchaseStatus.CANCELED_STATUS)">{{purchase.user_response.username}}</dd>
+
+                <dt class="col-sm-3" *ngIf="purchase.status == purchaseStatus.DISPATCHED_STATUS">Fecha D.</dt>
+                <dd class="col-sm-9" *ngIf="purchase.status == purchaseStatus.DISPATCHED_STATUS">{{purchase.dispatch_date}}</dd>
+
+                <dt class="col-sm-3" *ngIf="purchase.status == purchaseStatus.CANCELED_STATUS">Fecha A.</dt>
+                <dd class="col-sm-9" *ngIf="purchase.status == purchaseStatus.CANCELED_STATUS">{{purchase.canceled_date}}</dd> 
+            </dl>
+        </div>
+    </div>
     <div class="table-responsive">
-        <table class="table table-striped table-sm purchases">
+        <table class="table purchases">
           <thead>
             <tr>
               <th>Nombre Producto</th>

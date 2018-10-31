@@ -14,9 +14,9 @@ import {ProductService} from '../../services/product.service';
 })
 export class ProductListComponent implements OnInit {
     
-    private products: {};
-    private page = 1;
-    private totalCount: number;
+    public products: {};
+    public page = 1;
+    public totalCount: number;
 
     constructor(
         private route: ActivatedRoute, 

@@ -30,6 +30,7 @@
     "feather-icons": "^4.7.3",
     "jspdf": "^1.4.1",
     "jspdf-autotable": "^2.3.5",
+    "material-design-icons": "^3.0.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/sistemas/projects/angular/pedido/src/app/purchase/purchase-list/purchase-list.component.ts</file>
-            <file>file:/home/sistemas/projects/angular/pedido/src/app/purchase/purchase-edit/purchase-edit.component.ts</file>
-            <file>file:/home/sistemas/projects/angular/pedido/src/app/purchase/purchase-item-add/purchase-item-add.component.ts</file>
-            <file>file:/home/sistemas/projects/angular/pedido/src/app/purchase/purchase-item-add/purchase-item-add.component.html</file>
-            <file>file:/home/sistemas/projects/angular/pedido/src/app/purchase/purchase-list-request/purchase-list-request.component.ts</file>
-            <file>file:/home/sistemas/projects/angular/pedido/src/app/purchase/purchase-detail/purchase-detail.component.ts</file>
-            <file>file:/home/sistemas/projects/angular/pedido/src/app/purchase/purchase-new/purchase-new.component.ts</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
