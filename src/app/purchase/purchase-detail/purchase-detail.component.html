@@ -23,8 +23,8 @@
                 <dt class="col-sm-3">Estado</dt>
                 <dd class="col-sm-9"><span class="badge badge-secondary">{{ purchase.status }}</span></dd>
 
-                <dt class="col-sm-3" *ngIf="purchase.status == (purchaseStatus.DISPATCHED_STATUS || purchaseStatus.CANCELED_STATUS)">Usua. R.</dt>
-                <dd class="col-sm-9" *ngIf="purchase.status == (purchaseStatus.DISPATCHED_STATUS || purchaseStatus.CANCELED_STATUS)">{{purchase.user_response.username}}</dd>
+                <dt class="col-sm-3" *ngIf="purchase.status == purchaseStatus.DISPATCHED_STATUS || purchase.status == purchaseStatus.CANCELED_STATUS">Usua. R.</dt>
+                <dd class="col-sm-9" *ngIf="purchase.status == purchaseStatus.DISPATCHED_STATUS || purchase.status == purchaseStatus.CANCELED_STATUS">{{purchase.user_response.username}}</dd>
 
                 <dt class="col-sm-3" *ngIf="purchase.status == purchaseStatus.DISPATCHED_STATUS">Fecha D.</dt>
                 <dd class="col-sm-9" *ngIf="purchase.status == purchaseStatus.DISPATCHED_STATUS">{{purchase.dispatch_date}}</dd>
