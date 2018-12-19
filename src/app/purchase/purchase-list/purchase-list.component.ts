@@ -25,6 +25,7 @@ export class PurchaseListComponent implements OnInit {
     public page= 1;
     public totalCount: number;
     private roles: any;
+    public purchaseStatus = PurchaseStatus;
 
   constructor(
     private route: ActivatedRoute, 

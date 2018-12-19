@@ -28,6 +28,7 @@ export class PurchaseListRequestComponent implements OnInit {
     public page=1;
     public totalCount: number;
     public roles;
+    public purchaseStatus = PurchaseStatus;
 
   constructor(
     private route: ActivatedRoute, 

@@ -15,14 +15,20 @@
               </tr>
             </thead>
             <tbody>
-            <tr class="purchae-row" *ngFor="let purchase of purchases" [class.selected]="purchase === selectedPurchase" (click)="onSelect(purchase)">
+            <tr class="purchae-row"  *ngFor="let purchase of purchases" [class.selected]="purchase === selectedPurchase" (click)="onSelect(purchase)">
                 <td>{{purchase.id}}</td>
                 <td>{{purchase.office.name}}</td>
                 <td>{{purchase.created_at | date:'dd-MM-yyyy'}}</td>
                 <td>{{purchase.request_date | date:'dd-MM-yyyy' }}</td>
                 <td>{{purchase.canceled_date | date:'dd-MM-yyyy' }}</td>
                 <td>{{purchase.dispatch_date | date:'dd-MM-yyyy'}}</td>
-                <td>{{purchase.status}}</td>
+                <td>
+                    <span class="badge" [class.badge-light]="purchase.status == purchaseStatus.EDITION_STATUS || purchase.status == purchaseStatus.REQUEST_STATUS" 
+                                        [class.badge-success]="purchase.status == purchaseStatus.DISPATCHED_STATUS"
+                                        [class.badge-danger]="purchase.status == purchaseStatus.CANCELED_STATUS">
+                          {{purchase.status}}
+                    </span>
+                </td>
               </tr>
             </tbody>
           </table>
