@@ -43,4 +43,7 @@ Cloned a copy to include as a separate project, angular-cli@7.0.0-rc.0 does not 
 Here's a temporary fix: In ng-bootstrap.metadata.json of the npm package, replace all occurrences of (click)=\"!! with (click)=\". No idea if it breaks things, but at least gets around the build error.
 
 
+Deploy
+
+ng build --prod --extract-css=false
 

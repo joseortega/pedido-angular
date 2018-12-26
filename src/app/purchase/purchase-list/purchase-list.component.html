@@ -11,6 +11,7 @@
                 <th>Fecha de Solicitud</th>
                 <th>Fecha de Anulado</th>
                 <th>Fecha de Despacho</th>
+                <th>Usuario (Respuesta)</th>
                 <th>Estado</th>
               </tr>
             </thead>
@@ -22,6 +23,7 @@
                 <td>{{purchase.request_date | date:'dd-MM-yyyy' }}</td>
                 <td>{{purchase.canceled_date | date:'dd-MM-yyyy' }}</td>
                 <td>{{purchase.dispatch_date | date:'dd-MM-yyyy'}}</td>
+                <td><span *ngIf="purchase.user_response">{{purchase.user_response.username}}</span></td>
                 <td>
                     <span class="badge" [class.badge-light]="purchase.status == purchaseStatus.EDITION_STATUS || purchase.status == purchaseStatus.REQUEST_STATUS" 
                                         [class.badge-success]="purchase.status == purchaseStatus.DISPATCHED_STATUS"
